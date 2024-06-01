@@ -15,6 +15,95 @@ execute:
 
 ## a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table. (8 points)
 
-```{r}
+**Caption: table captions typically go above the table. Number the table and provide a title. Describe what is in the table (columns and rows).**
 
+**Table: In your table, each row should be a model with the model number (1, 2, 3, etc.) and the predictors for each model.**
+
+#### Load packages and data
+
+```{r}
+# general use
+library(tidyverse)
+library(readxl)
+library(here)
+library(janitor)
+
+# visualizing pairs
+library(GGally)
+
+# model selection
+library(MuMIn)
+
+# model predictions
+library(ggeffects)
+
+# model tables
+library(gtsummary)
+library(flextable)
+library(modelsummary)
+
+drought_exp <- read_xlsx(path = here("data", 
+                                     "Valliere_etal_EcoApps_Data.xlsx"),
+                         sheet = "First Harvest")
+
+# quick look at data 
+str(drought_exp)
+class(drought_exp)
+```
+
+#### Clean Data
+
+```{r}
+# cleaning
+drought_exp_clean <- drought_exp %>% 
+  clean_names() %>% # nicer column names
+  mutate(species_name = case_when( # adding column with species scientific names
+    species == "ENCCAL" ~ "Encelia californica", # bush sunflower
+    species == "ESCCAL" ~ "Eschscholzia californica", # California poppy
+    species == "PENCEN" ~ "Penstemon centranthifolius", # Scarlet bugler
+    species == "GRICAM" ~ "Grindelia camporum", # great valley gumweed
+    species == "SALLEU" ~ "Salvia leucophylla", # Purple sage
+    species == "STIPUL" ~ "Nasella pulchra", # Purple needlegrass
+    species == "LOTSCO" ~ "Acmispon glaber" # deerweed
+  )) %>% 
+  relocate(species_name, .after = species) %>% # moving species_name column after species
+  mutate(water_treatment = case_when( # adding column with full treatment names
+    water == "WW" ~ "Well watered",
+    water == "DS" ~ "Drought stressed"
+  )) %>% 
+  relocate(water_treatment, .after = water) # moving water_treatment column after water
+
+# Borrowed from template
+```
+
+#### Define & Compare Models
+
+```{r}
+model0 <- lm(total_g ~ 1, data = drought_exp_clean)
+model1 <- lm(total_g ~ sla + water_treatment + species_name, data = drought_exp_clean)
+model2 <- lm(total_g ~ sla + water_treatment, data = drought_exp_clean)
+model3 <- lm(total_g ~ sla + species_name, data = drought_exp_clean)
+model4 <- lm(total_g ~ water_treatment + species_name, data = drought_exp_clean)
+
+model_comparison <- model.sel(model0, model1, model2, model3, model4)
+print(model_comparison)
+```
+
+#### Create a Table Comparing Models
+
+```{r}
+models_table <- tibble::tribble(
+  ~`Model Number`, ~`Predictors`, ~`AIC`,
+  0, "None (Null Model)", AIC(model0),
+  1, "SLA, Water Treatment, Species", AIC(model1),
+  2, "SLA, Water Treatment", AIC(model2),
+  3, "SLA, Species", AIC(model3),
+  4, "Water Treatment, Species", AIC(model4)
+)
+```
+
+**The table below details the different models explored within workshop as well as the model that I created. Along with model number and predictors, AIC value for each value is also displayed.**
+
+```{r}
+print(models_table)
 ```
