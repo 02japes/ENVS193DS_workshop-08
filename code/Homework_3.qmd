@@ -1,0 +1,20 @@
+---
+title: "Homework 3 Submission Document"
+author: Jack Phillips
+date: 05/28/2024
+toc: true
+format: pdf
+execute: 
+  warning: false
+  message: false
+---
+
+[Link to Forked Repository](https://github.com/02japes/phillips-jack_homework-03)
+
+# Problem 1. Multiple Linear Regression: Model Selection and Construction (52 points)
+
+## a. Make a table or list of all the models from class and the last one you constructed on your own. Write a caption for your table. (8 points)
+
+```{r}
+
+```
