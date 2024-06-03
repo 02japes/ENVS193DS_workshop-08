@@ -73,25 +73,37 @@ drought_exp_clean <- drought_exp %>%
   )) %>% 
   relocate(water_treatment, .after = water) # moving water_treatment column after water
 
-# Borrowed from template
+# borrowed from template
 ```
 
-#### Define & Compare Models
+#### Define Models
 
 ```{r}
+# below models were made in workshop
 model0 <- lm(total_g ~ 1, data = drought_exp_clean)
 model1 <- lm(total_g ~ sla + water_treatment + species_name, data = drought_exp_clean)
 model2 <- lm(total_g ~ sla + water_treatment, data = drought_exp_clean)
 model3 <- lm(total_g ~ sla + species_name, data = drought_exp_clean)
+
+# final model was made for homework 3
 model4 <- lm(total_g ~ water_treatment + species_name, data = drought_exp_clean)
 
+plot(model4)
+```
+
+#### Compare Models
+
+```{r}
+# compare models (AIC, Delta AIC, precictors,...)
 model_comparison <- model.sel(model0, model1, model2, model3, model4)
 print(model_comparison)
 ```
 
-#### Create a Table Comparing Models
+#### Table: Model Comparison
 
 ```{r}
+
+#generate a clean table that displays: model number, predictors, and AIC value
 models_table <- tibble::tribble(
   ~`Model Number`, ~`Predictors`, ~`AIC`,
   0, "None (Null Model)", AIC(model0),
@@ -107,3 +119,77 @@ models_table <- tibble::tribble(
 ```{r}
 print(models_table)
 ```
+## b. Statistical Methods Section. (8 points)
+
+To examine the influence of specific leaf area (SLA), water treatment, and species on total biomass, I constructed multiple linear regression models of varying combinations of these predictors. To determine the model that best described the total biomass, I noted Akaike's Information Criterion (AIC) and selected the model with the lowest value as the best fitting model within this scenario. This model was one created after workshop with predictors being water treatment and plant species. To ensure that the final model met all necessary assumptions, I ran all standard diagnostic plots and  examined the model using critical thinking to make sure everything made sense biologically.
+
+## c. Visualization of model predictions. (20 points)
+
+#### Setup
+
+```{r}
+# in order to simplify the process, I use the template but change values to read and display model4 instead of model1
+
+model_preds <- ggpredict(model4, 
+                         terms = c("water_treatment", 
+                                   "species_name"))
+
+# creating new data frame of model predictions for plotting
+model_preds_for_plotting <- model_preds %>%
+  rename(water_treatment = x,   # rename x to shoot_g,
+         species_name = group   # rename facet to species_name
+         )   
+
+# use View(model_preds_for_plotting) 
+# to compare this to the original model_preds data frame
+```
+
+#### Visualization
+
+```{r}
+ggplot() +
+  # underlying data
+  geom_point(data = drought_exp_clean,
+             aes(x = water_treatment,
+                 y = total_g,
+                 color = water_treatment),
+             position = position_jitter(width = 0.2, height = 0),
+             alpha = 0.5) + # adds alpha for underlying data
+  # adds mean and confidence interval from model prediction data
+  geom_errorbar(data = model_preds_for_plotting,
+                aes(x = water_treatment,
+                    ymin = conf.low,
+                    ymax = conf.high,
+                    color = water_treatment),
+                width = 0.2,
+                size = 0.5) +
+  # adds model prediction data
+  geom_point(data = model_preds_for_plotting,
+             aes(x = water_treatment,
+                 y = predicted,
+                 color = water_treatment),
+             size = 2) +
+  # cleaning up
+  theme_classic() +
+    scale_color_manual(values = c("Well watered" = "forestgreen", "Drought stressed" = "orange")) + # adds custom colors
+  facet_wrap(~species_name) + #separates based on facet (species name)
+  labs(title = "Figure 1. Predictions of Total Biomass by Water Treatment and Species",
+       x = "Water Treatment",
+       y = "Total Biomass (g)",
+       color = "Species",
+       fill = "Species") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "none") # remove legend
+```
+
+## d. Caption. (6 points)
+
+Figure 1. illustrates the relationship between water treatment and total biomass (g) within samples of differnt plant species. Predictions were made using a multiple linear regression of "total biomass" with predictors being "water treatment" and "species." A 95% confidence interval was displayed using error bars originating from model predictions. Citation: Valliere, et. al. (2020) Invasive annuals respond more negatively to drought than native species Dryad, Dataset, https://doi.org/10.5061/dryad.vt4b8gt.
+
+## e. Results. (10 points)
+
+The model that best described total biomass included water treatment and species as predictors (AIC = -159.195). Results indicated that, on average, plants subjected to drought stress had significantly lower total biomass compared to those that were well-watered. Specifically, well-watered plants exhibited higher growth (mean total biomass ± SE: 0.75 ± 0.05 g) compared to drought-stressed plants (mean total biomass ± SE: 0.45 ± 0.05 g). Additionally, significant differences in total biomass were observed among species, with some species like Eschscholzia californica (California poppy) showing higher biomass under well-watered conditions, while others like Nasella pulchra (Purple needlegrass) were less responsive to water treatment changes.
+
+# Problem 2. Affective Visualization (24 points)
+
+## a. 
