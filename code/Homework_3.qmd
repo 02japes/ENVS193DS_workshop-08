@@ -207,7 +207,7 @@ For my data, I think that a good way to visualize the connection between a morni
 
 ## d. Write an artist statement. (8 points)
 
-This visualization shows the implementation of a 
+This visualization shows the implementation of a morning routine over the course of a month. This piece was strongly influenced by the work of Lupi and Posavec as I really liked their sketched visual of the data and I think that it meets my skill set with pen drawing fairly well. My work is in the form of a pen drawing. I used different elements such as shape, size, color, and shading to portray quantitative and qualitative information. I created a visualization that illustrates not only the connection between morning routine and productivity but also details the activities done within my morning routine, my mood rating, and the amount of time spent on myself during my routine. You can decode these elements through the legend in the top left corner of the illustration. I think that the possibilities of this method could be very creative if given enough time. The surf log that I proposed for this assignment and chose not to pursue would be really fun to visualize through this method. This fairly straightforward style of displaying information makes for an easy read from the viewers perspective. Or at least that's what I meant to achieve when creating this visual.
 
 # Problem 3. Statistical Critique (36 points)
 
