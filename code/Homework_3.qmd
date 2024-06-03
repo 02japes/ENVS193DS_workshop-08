@@ -119,9 +119,10 @@ models_table <- tibble::tribble(
 ```{r}
 print(models_table)
 ```
+
 ## b. Statistical Methods Section. (8 points)
 
-To examine the influence of specific leaf area (SLA), water treatment, and species on total biomass, I constructed multiple linear regression models of varying combinations of these predictors. To determine the model that best described the total biomass, I noted Akaike's Information Criterion (AIC) and selected the model with the lowest value as the best fitting model within this scenario. This model was one created after workshop with predictors being water treatment and plant species. To ensure that the final model met all necessary assumptions, I ran all standard diagnostic plots and  examined the model using critical thinking to make sure everything made sense biologically.
+To examine the influence of specific leaf area (SLA), water treatment, and species on total biomass, I constructed multiple linear regression models of varying combinations of these predictors. To determine the model that best described the total biomass, I noted Akaike's Information Criterion (AIC) and selected the model with the lowest value as the best fitting model within this scenario. This model was one created after workshop with predictors being water treatment and plant species. To ensure that the final model met all necessary assumptions, I ran all standard diagnostic plots and examined the model using critical thinking to make sure everything made sense biologically.
 
 ## c. Visualization of model predictions. (20 points)
 
@@ -192,4 +193,46 @@ The model that best described total biomass included water treatment and species
 
 # Problem 2. Affective Visualization (24 points)
 
-## a. 
+## a. Describe in words what an affective visualization could look like for your personal data (3-5 sentences). (2 points)
+
+For my data, I think that a good way to visualize the connection between a morning routine and daily productivity would take the form of something like Lupi and Posavec's "Dear Data" project. For this section I wanted to visualize my data outside of R script in order to better connect with the results of my project. I will visualize daily wake-up times using a size variable, and morning routine activities using the addition of color to these shapes. I will also visualize the passage of time throughout the quarter as well as productivity levels using formatting. As of now I think that I will visualize productivity using an overlapping element of the visualization. This will serve to show the trend of general productivity throughout the quarter.
+
+## b. Create a sketch (on paper) of your idea. (2 points)
+
+## c. Make a draft of your visualization. (12 points)
+
+## d. Write an artist statement. (8 points)
+
+# Problem 3. Statistical Critique (36 points)
+
+## a. Revisit and summarize (6 points)
+
+There are 2 statistical tests used to describe the relationship between climate change/drought and the starvation of aardvarks within the Kalahari Desert in Africa throughout the duration of this study. The first is the Mann-Whitney Rank Sum test which was used to compare climate data within two different samples (early November and late March). Activity patterns and body temperature observed within aardvark sample populations were explored by using linear mixed models with a predictor set as "period" (either November or March).
+
+![Table](1.png)
+
+![Data Visual](2.png)
+
+![Model Visualization](3.png)
+
+## b. Visual clarity (10 points)
+
+The authors effectively represented their statistics in figures. The figures included clear axes and labels, making it easy to interpret the data. For example:
+
+-   Axes: The x- and y-axes were logically positioned within both styles of plots. Authors used appropriate units and labels (exp. time of year on the x-axis and body temperature on the y-axis).
+
+-   Summary Statistics: Means and standard errors are displayed within the accompanying table, aiding in the understanding of central tendencies and variability.
+
+-   Model Predictions and Data: Both the underlying data and model predictions were shown, providing a thorough review of the results. This being said, I do think that there was a lot of data represented within these visualizations, making it hard to differentiate between readings at some points.
+
+## c. Aesthetic clarity (10 points)
+
+The authors did fairly well in managing aesthetic clarity of their visualizations:
+
+-   Data:Ink Ratio: Visuals included a lot of data. As you can see in some cases there is a too much data to differentiate between data readings other than at extremes. Being that the goal is to analyze trend throughout measured time, I think that these visualizations work well, but if we were looking to a changes within a specific day, this might be difficult.
+
+-   Visual Clutter: Within fitted models, visual clutter was minimal. Authors displayed relationships well between predictors and response variables. For raw data visualization, I think that there is just a lot of data in place overall which makes it hard to create a concise visual without enlarging the actual illustration too much. Enlargement of specific data frames was implemented in order to give a more in depth visual. 
+
+## d. Recommendations (can be longer than 4 sentences, 10 points)
+
+
