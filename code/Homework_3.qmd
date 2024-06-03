@@ -199,9 +199,15 @@ For my data, I think that a good way to visualize the connection between a morni
 
 ## b. Create a sketch (on paper) of your idea. (2 points)
 
+![First Sketch](IMG_3034.png)
+
 ## c. Make a draft of your visualization. (12 points)
 
+![Completed First Draft](IMG_3035.png)
+
 ## d. Write an artist statement. (8 points)
+
+This visualization shows the implementation of a 
 
 # Problem 3. Statistical Critique (36 points)
 
@@ -231,8 +237,26 @@ The authors did fairly well in managing aesthetic clarity of their visualization
 
 -   Data:Ink Ratio: Visuals included a lot of data. As you can see in some cases there is a too much data to differentiate between data readings other than at extremes. Being that the goal is to analyze trend throughout measured time, I think that these visualizations work well, but if we were looking to a changes within a specific day, this might be difficult.
 
--   Visual Clutter: Within fitted models, visual clutter was minimal. Authors displayed relationships well between predictors and response variables. For raw data visualization, I think that there is just a lot of data in place overall which makes it hard to create a concise visual without enlarging the actual illustration too much. Enlargement of specific data frames was implemented in order to give a more in depth visual. 
+-   Visual Clutter: Within fitted models, visual clutter was minimal. Authors displayed relationships well between predictors and response variables. For raw data visualization, I think that there is just a lot of data in place overall which makes it hard to create a concise visual without enlarging the actual illustration too much. Enlargement of specific data frames was implemented in order to give a more in depth visual.
 
 ## d. Recommendations (can be longer than 4 sentences, 10 points)
 
+Current Issues: (Model Plots)
 
+-   Color and Line Distinction: Could create more clarity in terms of variable differentiation
+
+-   Legend: Would be used to explain elements of the visual that may seem ambiguous.
+
+Recommendations:
+
+-   Colors could be used in order to create more visual differentiation between indicated predictors. Fairly easy touch that could add to visual appeal of graphics.
+
+-   A legend explaining black and grey bars at the bottom of the visual could be added in order to increase clarity.
+
+Current Issues: (Data Visualization)
+
+-   Data Density: High density of data creates some ambiguity of the specifics of recorded data.
+
+Recommendations:
+
+-   This could be aided by summary lines with a contrasting color. For example, a trend line in the color red could be used to highlight the tendency of the data without diminishing the value of including many data points within the visual.
